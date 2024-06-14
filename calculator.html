@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      background-color: black;
+      font-family: Arial, sans-serif;
+    }
+    
+    .calculator {
+      background-color: rgb(255, 0, 43);
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      width: 300px;
+      margin: 50px auto;
+      padding: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    .output {
+      font-size: 24px;
+      text-align: right;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      outline: none;
+      width: 93%;
+      background-color: #f9f9f9;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      width: 70px;
+      height: 70px;
+      font-size: 24px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button:hover {
+      background-color: #ddd;
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" class="output" id="output" value="0" disabled>
+
+  <div class="row">
+    <div class="button" onclick="appendToOutput('7')">7</div>
+    <div class="button" onclick="appendToOutput('8')">8</div>
+    <div class="button" onclick="appendToOutput('9')">9</div>
+    <div class="button" onclick="appendToOutput('/')">÷</div>
+  </div>
+
+  <div class="row">
+    <div class="button" onclick="appendToOutput('4')">4</div>
+    <div class="button" onclick="appendToOutput('5')">5</div>
+    <div class="button" onclick="appendToOutput('6')">6</div>
+    <div class="button" onclick="appendToOutput('*')">x</div>
+  </div>
+
+  <div class="row">
+    <div class="button" onclick="appendToOutput('1')">1</div>
+    <div class="button" 
+    onclick="appendToOutput('2')">2</div>
+    <div class="button" onclick="appendToOutput('3')">3</div>
+    <div class="button" onclick="appendToOutput('-')">-</div>
+  </div>
+
+  <div class="row">
+    <div class="button" onclick="appendToOutput('0')">0</div>
+    <div class="button" onclick="appendToOutput('.')">.</div>
+    <div class="button" onclick="calculate()">=</div>
+    <div class="button" onclick="appendToOutput('+')">+</div>
+  </div>
+</div>
+
+<script>
+function appendToOutput(value) {
+  var output = document.getElementById("output");
+  if (output.value === "0" && value !== ".") {
+    output.value = "";
+  }
+  output.value += value;
+}
+
+function calculate() {
+  var output = document.getElementById("output"); 
+   try {
+    var result = eval(output.value);
+    output.value = result;
+  } catch (error) {
+    output.value = "Error";
+  }
+}
+</script>
+
+</body>
+</html>
